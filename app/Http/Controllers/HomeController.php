@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mcoa;
+use App\Models\Mkategori;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $coa = Mcoa::all();
+        $roleName = Mkategori::all();
+        return view('coa.index', compact(['coa', 'roleName']));
     }
 }

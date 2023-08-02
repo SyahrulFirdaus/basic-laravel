@@ -1,6 +1,7 @@
 @extends('layouts.app')
-   @section('content')
-       <div id="wrapper">
+@section('content')
+    
+        <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -23,7 +24,6 @@
                 <div class="sidebar-heading">
                     Main Menu
                 </div>
-                
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -40,46 +40,52 @@
                         </div>
                     </div>
                 </li>
-
-                <hr class="sidebar-divider">
-
             </ul>
 
-            <div id="content-wrapper" class="d-flex flex-column mt-4">
+            <div id="content-wrapper" class="d-flex flex-column">
                 <div id="content">
                     <div class="container-fluid">
-                        <div class="card shadow mb-4">
+                        <div class="card shadow mb-4 mt-4 ">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Edit Data Chart of Account</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Edit Data Transaction</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <form action="/mcoa/{{ $coa->id }}" method="POST">
+                                    <form action="/mcoa/vreports/{{ $coa->id }}" method="POST">
                                         @method('put')
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Chart of Account Code</label>
-                                            <input type="text" class="form-control" id="nama" name="kode" aria-describedby="kodeHelp" value="{{ $coa->nama }}" @required(true)>
-                                            <div id="kodeHelp" class="form-text">Enter the chart of account code.</div>
+                                            <label for="exampleInputEmail1" class="form-label">Select Category</label>
+                                            <select class="form-select" aria-label="Default select example" name="category">
+                                                    @foreach ($roleKategori as $item)
+                                                        <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                                    @endforeach
+                                            </select>
+                                            <div id="namaHelp" class="form-text">Select your chart of account code.</div>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Chart of Account Name</label>
-                                            <input type="text" class="form-control" id="nama" name="nama" aria-describedby="nikHelp" value="{{ $coa->nama }}" @required(true)>
-                                            <div id="namaHelp" class="form-text">Enter the chart of account name.</div>
+                                            <label for="exampleInputEmail1" class="form-label">Tanggal</label>
+                                            <input type="date" class="form-control" id="tanggal" name="tanggal" aria-describedby="nikHelp" value="{{ $coa->tanggal }}" required>
+                                            <div id="namaHelp" class="form-text">Input your transaction date.</div>
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Select Category</label>
-                                            <select class="form-select" aria-label="Default select example" name="kategori" value="{{ $coa->kategori }}" @required(true)>
-                                                @foreach ($roleName as $item)
-                                                    <option value="{{ $item->nama }}">{{ $item->nama }}</option>
-                                                @endforeach
+                                            <select class="form-select" aria-label="Default select example" name="coa_nama">
+                                                    @foreach ($roleCoa as $item)
+                                                        <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                                    @endforeach
                                             </select>
-                                        <div id="namaHelp" class="form-text">Select the chart of accounts category.</div>
-
+                                            <div id="namaHelp" class="form-text">Select your chart of account code.</div>
                                         </div>
-                                    <a class="btn btn-warning" href="/mcoa">Cancel</a>
+                                            
+                                        {{-- <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Amount</label>
+                                            <input type="text" class="form-control" id="deskripsi" name="deskripsi" aria-describedby="deskripsiHelp" required>
+                                            <div id="namaHelp" class="form-text">Input your amount.</div>
+                                        </div>  --}}
+                                    <a class="btn btn-warning" href="/mcoa/vreports">Cancel</a>
                                     <button type="submit" class="btn btn-primary" value="save">Save</button>
                                     </form>
                                 </div>
@@ -102,5 +108,4 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
-   @endsection
-        
+@endsection

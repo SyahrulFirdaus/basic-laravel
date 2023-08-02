@@ -43,50 +43,40 @@
                     <div class="container-fluid">
                         <a class="btn btn-primary mb-4 mt-4" href="#" data-toggle="modal" data-target="#AddTransaction">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Add Transaction
+                                Add Reports
                         </a>
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Table Transaction</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Table Reports</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
-                                            <tr>
-                                                <th>No Transaction</th>
-                                                <th>Tanggal</th>
-                                                <th>Kode Chart of Account</th>
-                                                <th>Nama Chart of Account</th>
-                                                <th>Deskripsi</th>
-                                                <th>Debit</th>
-                                                <th>Kredit</th>
-                                                <th>Hapus</th>
+                                             <tr>
+                                                <th>No Reports</th>
+                                                <th>Categori</th>
+                                                <th>Date</th>
+                                                <th>Chart of Account Name</th>
                                                 <th>Edit</th>
-
+                                                <th>Hapus</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-
-                                            ?>
                                             @foreach ($roleTransaction as $item)
                                             <tr>
                                                 <td><b>TRS-MMXXIII-{{ $item->id }}</b></td>
+                                                <td>{{ $item->category }}</td>
                                                 <td>{{ $item->tanggal }}</td>
-                                                <td>{{ $item->coa_kode }}</td>
                                                 <td>{{ $item->coa_nama }}</td>
-                                                <td>{{ $item->deskripsi }}</td>
-                                                <td>{{ $item->debit }}</td>
-                                                <td>{{ $item->kredit }}</td>
                                                 <td>
-                                                    <a class="btn btn-primary mb-4" href="/mcoa/{{ $item-> id }}/editTransaction">
+                                                    <a class="btn btn-primary mb-4" href="/mcoa/{{ $item-> id }}/editReports">
                                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                                             Edit
                                                     </a>
                                                 </td>
                                                 <td> 
-                                                    <form action="/mcoa/vtransaction/{{ $item-> id }}" method="POST">
+                                                    <form action="/mcoa/vreports/{{ $item-> id }}" method="POST">
                                                         @csrf
                                                         @method('delete')
                                                         <input class="btn btn-danger" type="submit" name="submit" value="Delete">
@@ -105,7 +95,7 @@
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
+                            <span>Copyright &copy; Tiketux 2023</span>
                         </div>
                     </div>
                 </footer>
@@ -118,83 +108,45 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Data Transcation</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add Data Reports</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <form action="/mcoa/storeTransaction" method="POST">
-                            @csrf
+                    <form action="/mcoa/storeReports" method="POST">
+                        @csrf
                     <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Select Category</label>
+                            <select class="form-select" aria-label="Default select example" name="category">
+                                    @foreach ($roleKategori as $item)
+                                        <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                    @endforeach
+                            </select>
+                            <div id="namaHelp" class="form-text">Select your chart of account code.</div>
+                        </div>
+
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Tanggal</label>
                             <input type="date" class="form-control" id="tanggal" name="tanggal" aria-describedby="nikHelp" required>
                             <div id="namaHelp" class="form-text">Input your transaction date.</div>
                         </div>
-                            
+
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Chart of Accounts Code</label>
-                            <select class="form-select" aria-label="Default select example" name="coa_kode">
-                                    @foreach ($roleCoa as $item)
-                                        <option value="{{ $item->kode }}">{{ $item->kode }}</option>
-                                    @endforeach
-                            </select>
-                            <div id="namaHelp" class="form-text">Select your chart of account code.</div>
-                        </div> 
-                        
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Name of Chart of Account</label>
+                            <label for="exampleInputEmail1" class="form-label">Select Category</label>
                             <select class="form-select" aria-label="Default select example" name="coa_nama">
                                     @foreach ($roleCoa as $item)
                                         <option value="{{ $item->nama }}">{{ $item->nama }}</option>
                                     @endforeach
                             </select>
                             <div id="namaHelp" class="form-text">Select your chart of account code.</div>
-                        </div> 
-                        
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Deskripsi</label>
+                        </div>
+                            
+                        {{-- <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Amount</label>
                             <input type="text" class="form-control" id="deskripsi" name="deskripsi" aria-describedby="deskripsiHelp" required>
-                            <div id="namaHelp" class="form-text">Input your chart of account description.</div>
-                        </div> 
-
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Debit</label>
-                            <input type="text" class="form-control" id="debit" name="debit" aria-describedby="deskripsiHelp" required>
-
-                            {{-- <input
-                                type="text"
-                                name="debit"
-                                id="txtExampleBoxOne"
-                                value=""
-                                class="form-control"
-                                onBlur="formatCurrency(this, 'Rp ', 'blur');"
-                                onkeyup="formatCurrency(this, 'Rp ');"
-                            /> --}}
-                            <div id="namaHelp" class="form-text">Input the debit nominal amount for your chart of account.</div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Kredit</label>
-                            <input 
-                            type="text" 
-                            class="form-control" 
-                            id="kredit" name="kredit" 
-                            aria-describedby="deskripsiHelp" 
-                            required>
-
-                            {{-- <input
-                                type="text"
-                                name="kredit"
-                                id="txtExampleBoxOne"
-                                value=""
-                                class="form-control"
-                                onBlur="formatCurrency(this, 'Rp ', 'blur');"
-                                onkeyup="formatCurrency(this, 'Rp ');"
-                            /> --}}
-                            <div id="namaHelp" class="form-text">Input the nominal credit amount for your chart of account.</div>
-                        </div>
-                        
+                            <div id="namaHelp" class="form-text">Input your amount.</div>
+                        </div>  --}}
                     </div>
 
                     <div class="modal-footer">

@@ -10,9 +10,9 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/mcoa">
+                    <a class="nav-link" href="/mcoa/vreports">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
+                        <span>Reports</span></a>
                 </li>
                 <hr class="sidebar-divider">
 
@@ -32,7 +32,6 @@
                             <a class="collapse-item" href="/mcoa">Master Chart of Account</a>
                             <a class="collapse-item" href="/mcoa/vkategori">Kategori Chart of Account</a>
                             <a class="collapse-item" href="/mcoa/vtransaction">Transaction</a>
-
                         </div>
                     </div>
                 </li>
@@ -47,7 +46,7 @@
                         </a>
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Table Category Chart of Account</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -121,7 +120,7 @@
 
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary" value="save">Submit</button>
+                        <button type="submit" class="btn btn-primary" value="save">Save</button>
                     </div>
                     </form>
                 </div>

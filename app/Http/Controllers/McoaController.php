@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mcoa;
 use App\Models\Mkategori;
+use App\Models\Mreport;
 use App\Models\Mtransaction;
 use Illuminate\Http\Request;
 
@@ -103,5 +104,40 @@ class McoaController extends Controller
         return redirect('/mcoa/vtransaction');
     }
 
-    
+    public function vreports()
+    {
+        $roleTransaction = Mreport::all();
+        $roleCoa = Mcoa::all();
+        $roleKategori = Mkategori::all();
+        return view('coa.reports', compact(['roleTransaction', 'roleCoa','roleKategori']));
+    }
+
+    public function storeReports(Request $request)
+    {
+        Mreport::create($request->except(['_token', 'submit']));
+        return redirect('/mcoa/vreports');
+    }
+
+    public function destroyReports($id)
+    {
+        $delReports = Mreport::find($id);
+        $delReports->delete();
+        return redirect('/mcoa/vreports');
+    }
+
+
+    public function editReports($id)
+    {
+        $coa = Mreport::find($id);
+        $roleKategori = Mkategori::all();
+        $roleCoa = Mcoa::all();
+        return view('coa.editReports', compact(['coa', 'roleCoa','roleKategori']));
+    }
+
+    public function updateReports($id, Request $request)
+    {
+        $coa = Mreport::find($id);
+        $coa->update($request->except(['_token', 'submit']));
+        return redirect('/mcoa/vreports');
+    }
 }

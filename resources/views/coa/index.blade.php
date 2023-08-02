@@ -13,9 +13,9 @@
                 <hr class="sidebar-divider my-0">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/mcoa">
+                    <a class="nav-link" href="/mcoa/vreports">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
+                        <span>Reports</span></a>
                 </li>
 
                 <hr class="sidebar-divider">
@@ -174,7 +174,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary" value="save">Submit</button>
+                        <button type="submit" class="btn btn-primary" value="save">Save</button>
                     </div>
                     </form>
                 </div>

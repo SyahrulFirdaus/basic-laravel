@@ -34,6 +34,13 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/mcoa/vtransaction/{id}', [McoaController::class, 'destroyTransaction']);
     Route::get('/mcoa/{id}/editTransaction', [McoaController::class, 'editTransaction']);
     Route::put('/mcoa/vtransaction/{id}', [McoaController::class, 'updateTransaction']);
+
+    Route::get('/mcoa/vreports', [McoaController::class, 'vreports']);
+    Route::post('/mcoa/storeReports', [McoaController::class, 'storeReports']);
+    Route::delete('/mcoa/vreports/{id}', [McoaController::class, 'destroyReports']);
+    Route::get('/mcoa/{id}/editReports', [McoaController::class, 'editReports']);
+    Route::put('/mcoa/vreports/{id}', [McoaController::class, 'updateReports']);
+
 });
 
 
