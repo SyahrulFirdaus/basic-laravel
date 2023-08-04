@@ -45,6 +45,16 @@
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Add Reports
                         </a>
+
+                        <a class="btn btn-primary mb-4 mt-4" href="/mcoa/exportreports" target="_blank">
+                            <i class="fas fa-print"></i>
+                                export Reports
+                        </a>
+
+                        <a class="btn btn-primary mb-4 mt-4" href="/mcoa/exportExcel">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Exports
+                        </a>
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Table Reports</h6>

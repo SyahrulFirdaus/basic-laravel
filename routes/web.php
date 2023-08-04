@@ -16,9 +16,9 @@ use App\http\Controllers\McoaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/auth/login');
 });
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
     Route::get('/mcoa', [McoaController::class, 'index']);
     Route::post('/mcoa/store', [McoaController::class, 'store']);
     Route::get('/mcoa/{id}/edit', [McoaController::class, 'edit']);
@@ -40,7 +40,9 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/mcoa/vreports/{id}', [McoaController::class, 'destroyReports']);
     Route::get('/mcoa/{id}/editReports', [McoaController::class, 'editReports']);
     Route::put('/mcoa/vreports/{id}', [McoaController::class, 'updateReports']);
+    // Route::get('/mcoa/vreports', [McoaController::class, 'exportExcel'])->name('exportExcel');
 
+    Route::get('/mcoa/exportreports', [McoaController::class, 'exportreports']);
 });
 
 

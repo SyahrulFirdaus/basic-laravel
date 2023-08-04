@@ -2,26 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ReportsExport;
 use App\Models\Mcoa;
 use App\Models\Mkategori;
 use App\Models\Mreport;
 use App\Models\Mtransaction;
 use Illuminate\Http\Request;
+use PSpell\Config\excel;
 
 class McoaController extends Controller
 {
     //
-    public function index () {
+    public function index()
+    {
         $coa = Mcoa::all();
         $roleName = Mkategori::all();
-        return view ('coa.index',compact(['coa','roleName']));
+        return view('coa.index', compact(['coa', 'roleName']));
     }
 
-    public function create (){
-        $roleName =Mkategori::all();
-        return view ('coa.create',compact(['roleName']));
+    public function create()
+    {
+        $roleName = Mkategori::all();
+        return view('coa.create', compact(['roleName']));
     }
-    public function store (Request $request) 
+    public function store(Request $request)
     {
         Mcoa::create($request->except(['_token', 'submit']));
         return redirect('/mcoa');
@@ -31,12 +35,12 @@ class McoaController extends Controller
     {
         $coa = Mcoa::find($id);
         $roleName = Mkategori::all();
-        return view('coa.edit',compact(['coa','roleName']));
+        return view('coa.edit', compact(['coa', 'roleName']));
     }
-    public function update ($id, Request $request)
+    public function update($id, Request $request)
     {
         $coa = Mcoa::find($id);
-        $coa -> update($request->except(['_token', 'submit']));
+        $coa->update($request->except(['_token', 'submit']));
         return redirect('/mcoa');
     }
 
@@ -48,10 +52,10 @@ class McoaController extends Controller
     }
 
     // Category
-    public function vkategori ()
+    public function vkategori()
     {
         $roleName = Mkategori::all();
-        return view('coa.category',compact(['roleName']));
+        return view('coa.category', compact(['roleName']));
     }
 
     public function storeKategori(Request $request)
@@ -72,7 +76,7 @@ class McoaController extends Controller
     {
         $roleTransaction = Mtransaction::all();
         $roleCoa = Mcoa::all();
-        return view('coa.transaction',compact(['roleTransaction','roleCoa']));
+        return view('coa.transaction', compact(['roleTransaction', 'roleCoa']));
     }
 
     public function storeTransaction(Request $request)
@@ -94,7 +98,7 @@ class McoaController extends Controller
         $coa = Mtransaction::find($id);
         $roleName = Mkategori::all();
         $roleCoa = Mcoa::all();
-        return view('coa.editTransaction', compact(['coa', 'roleName','roleCoa']));
+        return view('coa.editTransaction', compact(['coa', 'roleName', 'roleCoa']));
     }
 
     public function updateTransaction($id, Request $request)
@@ -109,7 +113,7 @@ class McoaController extends Controller
         $roleTransaction = Mreport::all();
         $roleCoa = Mcoa::all();
         $roleKategori = Mkategori::all();
-        return view('coa.reports', compact(['roleTransaction', 'roleCoa','roleKategori']));
+        return view('coa.reports', compact(['roleTransaction', 'roleCoa', 'roleKategori']));
     }
 
     public function storeReports(Request $request)
@@ -131,7 +135,7 @@ class McoaController extends Controller
         $coa = Mreport::find($id);
         $roleKategori = Mkategori::all();
         $roleCoa = Mcoa::all();
-        return view('coa.editReports', compact(['coa', 'roleCoa','roleKategori']));
+        return view('coa.editReports', compact(['coa', 'roleCoa', 'roleKategori']));
     }
 
     public function updateReports($id, Request $request)
@@ -139,5 +143,19 @@ class McoaController extends Controller
         $coa = Mreport::find($id);
         $coa->update($request->except(['_token', 'submit']));
         return redirect('/mcoa/vreports');
+    }
+
+    // public function exportExcel()
+    // {   
+    //     return Excel::download(new ReportsExport,'dataPegawai.xlsx')
+    //     // return excel::download(new ReportsExport, 'dataPegawai.xlsx');
+    // }
+
+    public function exportreports()
+    {
+        $roleTransaction = Mreport::all();
+        $roleCoa = Mcoa::all();
+        $roleKategori = Mkategori::all();
+        return view('coa.exportPdfReports', compact(['roleTransaction', 'roleCoa', 'roleKategori']));
     }
 }

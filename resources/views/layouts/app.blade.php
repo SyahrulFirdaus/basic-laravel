@@ -107,6 +107,7 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
+                    <p>Email : syahrulfirdaus781@gmail.com, password: 12345678</p>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
