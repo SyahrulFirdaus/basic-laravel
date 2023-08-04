@@ -2,11 +2,8 @@
 @section('content')
     
     <div id="wrapper">
-         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
-                    </div>
+         <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center">
                     <div class="sidebar-brand-text mx-3">Tiketux</div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -42,7 +39,7 @@
                 <div id="content"> 
                     <div class="container-fluid">
                         <a class="btn btn-primary mb-4 mt-4" href="#" data-toggle="modal" data-target="#AddTransaction">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                             <i class="fas fa-plus-square pr-1"></i>
                                 Add Transaction
                         </a>
                         <div class="card shadow mb-4">

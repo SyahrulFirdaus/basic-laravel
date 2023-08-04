@@ -2,11 +2,8 @@
 @section('content')
 
         <div id="wrapper">
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
-                    </div>
+            <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center">
                     <div class="sidebar-brand-text mx-3">Tiketux</div>
                 </a>
 
@@ -45,8 +42,8 @@
             <div id="content-wrapper" class="d-flex flex-column">
                 <div id="content">
                     <div class="container-fluid">
-                        <a class="btn btn-primary mb-4 mt-4" href="#" data-toggle="modal" data-target="#AddCoa">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <a class="btn btn-primary mb-4 mt-4 pl-3" href="#" data-toggle="modal" data-target="#AddCoa">
+                            <i class="fas fa-plus-square pr-1"></i>
                                 Add Chart of Account
                         </a>
                         <div class="card shadow mb-4">
@@ -105,7 +102,7 @@
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
+                            <span>Copyright &copy; Tiketux 2023</span>
                         </div>
                     </div>
                 </footer>
@@ -115,26 +112,6 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="modal fade" id="AddCoa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
